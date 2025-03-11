@@ -6,44 +6,44 @@ import ClientProjectView from "@/components/client-view/project";
 import Image from "next/image";
 
 async function extractAllDatas(currentSection) {
-  const urls = [
-    `http://localhost:3000/api/${currentSection}/get`,
-    `https://portfoliov2-five-iota.vercel.app/api/${currentSection}/get`
-  ];
-
+  // First option URL
+  const url1 = `http://localhost:3000/api/${currentSection}/get`;
+  // Second option URL
+  const url2 = `https://portfoliov2-five-iota.vercel.app/api/${currentSection}/get`;
+  
+  // Try the first URL
   try {
-    const results = await Promise.allSettled(
-      urls.map(async (url) => {
-        try {
-          const res = await fetch(url, { method: "GET", cache: "no-store" });
-          if (!res.ok) throw new Error(`Failed to fetch from ${url}`);
-          return await res.json();
-        } catch (error) {
-          console.error(`Fetch error for ${url}:`, error);
-          return null; // Ensure a consistent return type
-        }
-      })
-    );
-
-    // Extract successful responses only
-    const data = results
-    .filter(result => {
-      return result.status === "fulfilled" && 
-             result.value !== null && 
-             result.value !== undefined && 
-             result.value.data !== null && 
-             result.value.data !== undefined;
-    })
-    .map(result => result.value.data)
-    .flat();
-
-    return data.length ? data : null;
+    const res = await fetch(url1, {
+      method: "GET",
+      cache: "no-store"
+    });
+    
+    if (res.ok) {
+      const data = await res.json();
+      return data && data.data;
+    }
   } catch (error) {
-    console.error("Unexpected error:", error);
-    return null;
+    console.log(`First URL failed: ${error.message}`);
   }
+  
+  // If first URL fails, try the second URL
+  try {
+    const res = await fetch(url2, {
+      method: "GET",
+      cache: "no-store"
+    });
+    
+    if (res.ok) {
+      const data = await res.json();
+      return data && data.data;
+    }
+  } catch (error) {
+    console.log(`Second URL failed: ${error.message}`);
+  }
+  
+  // If both URLs fail, return null or throw an error
+  throw new Error("All endpoints failed to respond");
 }
-
 
 export default async function Home() {
 
