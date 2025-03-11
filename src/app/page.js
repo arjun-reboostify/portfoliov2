@@ -6,32 +6,13 @@ import ClientProjectView from "@/components/client-view/project";
 import Image from "next/image";
 
 async function extractAllDatas(currentSection) {
-  const urls = [
-    `http://localhost:3000/api/${currentSection}/get`,  // Replace with actual URL
-    `https://portfoliov2-five-iota.vercel.app//api/${currentSection}/get`  // Replace with actual URL
-  ];
-
-  try {
-    const results = await Promise.allSettled(
-      urls.map(async (url) => {
-        const res = await fetch(url, { method: "GET", cache: "no-store" });
-        return res.ok ? res.json() : Promise.reject(`Failed to fetch from ${url}`);
-      })
-    );
-
-    // Extract successful responses only
-    const data = results
-      .filter(result => result.status === "fulfilled") // Keep only successful requests
-      .map(result => result.value.data) // Extract data field, adjust as per API response structure
-      .flat();
-
-    return data;
-  } catch (error) {
-    console.error("Unexpected error:", error);
-    return null;
-  }
+  const res = await fetch(`http://localhost:3000/api/${currentSection}/get`,{
+    method: "GET",
+    cache: "no-store"
+  });
+  const data = await res.json();
+  return data && data.data;
 }
-
 
 export default async function Home() {
 
