@@ -27,9 +27,15 @@ async function extractAllDatas(currentSection) {
 
     // Extract successful responses only
     const data = results
-      .filter(result => result.status === "fulfilled" && result.value?.data) // Ensure .value and .data exist
-      .map(result => result.value.data)
-      .flat();
+    .filter(result => {
+      return result.status === "fulfilled" && 
+             result.value !== null && 
+             result.value !== undefined && 
+             result.value.data !== null && 
+             result.value.data !== undefined;
+    })
+    .map(result => result.value.data)
+    .flat();
 
     return data.length ? data : null;
   } catch (error) {
