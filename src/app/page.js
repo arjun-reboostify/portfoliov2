@@ -6,43 +6,12 @@ import ClientProjectView from "@/components/client-view/project";
 import Image from "next/image";
 
 async function extractAllDatas(currentSection) {
-  // First option URL
-  const url1 = `http://localhost:3000/api/${currentSection}/get`;
-  // Second option URL
-  const url2 = `https://portfoliov2-five-iota.vercel.app/api/${currentSection}/get`;
-  
-  // Try the first URL
-  try {
-    const res = await fetch(url1, {
-      method: "GET",
-      cache: "no-store"
-    });
-    
-    if (res.ok) {
-      const data = await res.json();
-      return data && data.data;
-    }
-  } catch (error) {
-    console.log(`First URL failed: ${error.message}`);
-  }
-  
-  // If first URL fails, try the second URL
-  try {
-    const res = await fetch(url2, {
-      method: "GET",
-      cache: "no-store"
-    });
-    
-    if (res.ok) {
-      const data = await res.json();
-      return data && data.data;
-    }
-  } catch (error) {
-    console.log(`Second URL failed: ${error.message}`);
-  }
-  
-  // If both URLs fail, return null or throw an error
-  throw new Error("All endpoints failed to respond");
+  const res = await fetch(`https://portfoliov2-five-iota.vercel.app/api/${currentSection}/get`,{
+    method: "GET",
+    cache: "no-store"
+  });
+  const data = await res.json();
+  return data && data.data;
 }
 
 export default async function Home() {
