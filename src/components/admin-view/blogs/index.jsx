@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import AnimationWrapper from "../../client-view/animation-wrapper";
-import { addData } from "@/services";
+import { addData,getData,handleDelete } from "@/services";
 
 const controls = [
     {
@@ -38,8 +38,8 @@ const initialFormData ={
 }
 
 
-export default function ClientBlogsView(){
-
+export default function ClientBlogsView({data,setAllData}){
+const blogs = "blogs"
     const [formData, setFormData] = useState(initialFormData);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     
@@ -61,7 +61,19 @@ export default function ClientBlogsView(){
         }
     })
 
-
+ const handleDeleteItem = async (id) => {
+        const response = await handleDelete(id,blogs);
+        if (response.success) {
+            const updatedData = data.filter((item) => item._id !== id);
+            setAllData((prevData) => ({
+                ...prevData,
+                education: updatedData
+            }));
+            console.log("Item deleted Successfully");
+        }else {
+            console.error("Failed to delete item", response.message)
+        }
+    };
     const isValidForm = () => {
         return formData &&
         formData.name !== "" &&
@@ -73,7 +85,31 @@ export default function ClientBlogsView(){
     return (
         <div className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto" id="blogs">
 
+<div className="mb-10 space-y-6">
+        {data && data.length ? (
+            data.map((item,index) => (
+                <div key={index} className="bg-[#ffffff] flex flex-col gap-2 p-6 rounded-lg shadow-md border border-green-600 hover:border-green-800 transition duration-300" >
+ <p className="text-lg font-semibold text-gray-700">Degree: {item.name}</p>
+ <p className="text-lg text-gray-700">Year: {item.email}</p>
+ <p className="text-lg   text-gray-700">College: {item.message}</p>
+
+  <div className="flex gap-2">
+     <button onClick={() => handleDeleteItem(item._id)} className="bg-red-500 text-white-500 p-2 rounded">
+            Delete
+     </button>
+  </div>
+
+
+
+              </div>
+            ))
+        ) : 
+        <p className="text-center text-gray-600"> No Job Experince data Available</p>
+    }
+
+    </div>
 <AnimationWrapper className={"py-6"}>
+    
     <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
 
     <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-bold">

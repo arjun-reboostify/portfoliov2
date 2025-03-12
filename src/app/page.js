@@ -6,7 +6,7 @@ import ClientProjectView from "@/components/client-view/project";
 import Image from "next/image";
 
 async function extractAllDatas(currentSection) {
-  const res = await fetch(`https://portfoliov2-five-iota.vercel.app/api/${currentSection}/get`,{
+  const res = await fetch(`https://arjundubey.vercel.app/api/${currentSection}/get`,{
     method: "GET",
     cache: "no-store"
   });

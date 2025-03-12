@@ -25,9 +25,10 @@ const controls = [
 
 
 export default function AdminEducationView({formData,setFormData,handleSaveData,data,setAllData}){
+    const education = "education";
 
     const handleDeleteItem = async (id) => {
-        const response = await handleDelete(id);
+        const response = await handleDelete(id,education);
         if (response.success) {
             const updatedData = data.filter((item) => item._id !== id);
             setAllData((prevData) => ({

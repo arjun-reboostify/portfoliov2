@@ -118,7 +118,11 @@ export default function AdminView(){
         {
             id: 'blogs',
             lable: 'Blogs',
-            component: <AdminBlogsView/>
+         
+            component: <AdminBlogsView
+            data={allData?.blogs}
+            setAllData={setAllData}
+            />
         }
     ]
 
@@ -136,10 +140,11 @@ export default function AdminView(){
         : await addData(currentSeletedTab,dataMap[currentSeletedTab]);
         console.log(response, "response");
 
-        if (response.success) {
+        if (response && response.success) {
             resetFormDatas();
             extractAllDatas();
-        } 
+        }
+        
     }
 
     useEffect(() => {

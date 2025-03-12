@@ -66,9 +66,9 @@ export async function login(formData){
     } 
 }
 
-export async function handleDelete(id) {
+export async function handleDelete(id,field) {
     try {
-        const res = await fetch(`/api/education/delete`,{
+        const res = await fetch(`/api/${field}/delete`,{
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
