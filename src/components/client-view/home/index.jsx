@@ -39,7 +39,7 @@ export default function ClientHomeView({ data }) {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
               {data && data.length 
                 ? data[0]?.heading.split(" ").map((item, index) => (
-                    <span key={index} className={`${index === 2 || index === 3 ? "text-green-main" : "text-gray-800"}`}>
+                    <span key={index} className={`${index === 1 || index === 3 ? "text-green-main" : "text-gray-800"}`}>
                       {item}{" "}
                     </span>
                   )) 

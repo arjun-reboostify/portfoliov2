@@ -6,57 +6,68 @@ import logo from "../../../assets/logo.png";
 import { Link as LinkScroll, scroller } from "react-scroll";
 import { usePathname, useRouter } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Home, User, Briefcase, FolderDot, Mail, BookOpen } from "lucide-react";
 
 const menuItems = [
     {
         id: "home",
-        label: "Home"
+        label: "Home",
+        icon: Home
     },
     {
         id: "about",
-        label: "About"
+        label: "About",
+        icon: User
     },
     {
         id: "experience",
-        label: "Experience"
+        label: "Experience",
+        icon: Briefcase
     },
     {
         id: "project",
-        label: "Project"
+        label: "Project",
+        icon: FolderDot
     },
     {
         id: "contact",
-        label: "Contact"
+        label: "Contact",
+        icon: Mail
     },
 ];
 
 function CreateMenus({ activeLink, getMenuItems, setActiveLink, router, pathname, isMobile }) {
-    return getMenuItems.map((item) => (
-        <LinkScroll
-            key={item.id}
-            activeClass="active"
-            to={item.id}
-            spy={true}
-            smooth={true}
-            duration={1000}
-            onSetActive={() => setActiveLink(item.id)}
-            onClick={() => {
-                // Redirect to /home if not already there
-                if (pathname !== "/") {
-                    router.push("/");
-                }
-            }}
-            className={`px-2 py-2 sm:px-3 md:px-4 mx-1 sm:mx-2 cursor-pointer animation-hover inline-block relative text-sm sm:text-base ${
-                isMobile ? "flex-1 text-center" : ""
-            } ${
-                activeLink === item.id 
-                ? "text-green-main animation-active font-bold " + (isMobile ? "border-t-2 border-green-main" : "shadow-green-main")
-                : "text-[#000] font-medium hover:text-green-main"
-            }`}
-        >
-            {item.label}
-        </LinkScroll>
-    ))
+    return getMenuItems.map((item) => {
+        const Icon = item.icon;
+        
+        return (
+            <LinkScroll
+                key={item.id}
+                activeClass="active"
+                to={item.id}
+                spy={true}
+                smooth={true}
+                duration={1000}
+                onSetActive={() => setActiveLink(item.id)}
+                onClick={() => {
+                    // Redirect to /home if not already there
+                    if (pathname !== "/") {
+                        router.push("/");
+                    }
+                }}
+                className={`px-2 py-2 sm:px-3 md:px-4 mx-1 sm:mx-2 cursor-pointer animation-hover inline-block relative text-sm sm:text-base ${
+                    isMobile ? "flex-1 text-center flex flex-col items-center justify-center" : "flex items-center"
+                } ${
+                    activeLink === item.id 
+                    ? "text-green-main animation-active font-bold " + (isMobile ? "border-t-2 border-green-main" : "shadow-green-main")
+                    : "text-[#000] font-medium hover:text-green-main"
+                }`}
+            >
+                <Icon className={`${isMobile ? "mb-1 h-5 w-5" : "mr-2 h-5 w-5"}`} />
+                {item.label}
+            </LinkScroll>
+        );
+    });
 }
 
 export default function Navbar() {
@@ -86,13 +97,13 @@ export default function Navbar() {
                         <Image
                             src={logo}
                             alt="Logo"
-                            layout="responsive"
+                            layout="intrinsic"
                             quality={100}
-                            height={80}
                             width={100}
-                            className="w-16 sm:w-20 md:w-24"
+                            height={80}
+                            className="w-16 sm:w-20 md:w-24 lg:w-28 object-contain"
                         />
-                    </div> 
+                    </div>
                     
                     {/* Desktop Navigation */}
                     <ul className="hidden lg:flex col-start-4 col-end-8 text-[#000] items-center">
@@ -110,8 +121,9 @@ export default function Navbar() {
                     <div className="hidden lg:flex col-start-10 col-end-12 justify-end items-center">
                         <button
                             onClick={() => (window.location.href = "/blogs")} 
-                            className="py-1.5 px-4 border-2 border-green-600 text-green-600 font-semibold rounded-full text-base hover:bg-green-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out"
+                            className="py-1.5 px-4 border-2 border-green-600 text-green-600 font-semibold rounded-full text-base hover:bg-green-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out flex items-center"
                         >
+                            <BookOpen className="mr-2 h-5 w-5" />
                             Blogs
                         </button>
                     </div>
@@ -120,8 +132,9 @@ export default function Navbar() {
                     <div className="lg:hidden col-start-10 col-end-12 flex justify-end items-center">
                         <button
                             onClick={() => (window.location.href = "/blogs")} 
-                            className="py-1 px-3 mr-3 border-2 border-green-600 text-green-600 font-semibold rounded-full text-sm hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out"
+                            className="py-1 px-3 mr-3 border-2 border-green-600 text-green-600 font-semibold rounded-full text-sm hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out flex items-center"
                         >
+                            <BookOpen className="mr-1 h-4 w-4" />
                             Blogs
                         </button>
                         <button 
@@ -140,30 +153,35 @@ export default function Navbar() {
                 {mobileMenuOpen && (
                     <div className="lg:hidden bg-white px-4 py-3 shadow-lg">
                         <ul className="flex flex-col space-y-2">
-                            {menuItems.map((item) => (
-                                <LinkScroll
-                                    key={item.id}
-                                    activeClass="active"
-                                    to={item.id}
-                                    spy={true}
-                                    smooth={true}
-                                    duration={1000}
-                                    onSetActive={() => setActiveLink(item.id)}
-                                    onClick={() => {
-                                        if (pathname !== "/") {
-                                            router.push("/");
-                                        }
-                                        setMobileMenuOpen(false);
-                                    }}
-                                    className={`px-3 py-2 block w-full rounded ${
-                                        activeLink === item.id 
-                                        ? "text-white bg-green-600 font-bold"
-                                        : "text-[#000] hover:bg-green-50 hover:text-green-600"
-                                    }`}
-                                >
-                                    {item.label}
-                                </LinkScroll>
-                            ))}
+                            {menuItems.map((item) => {
+                                const Icon = item.icon;
+                                
+                                return (
+                                    <LinkScroll
+                                        key={item.id}
+                                        activeClass="active"
+                                        to={item.id}
+                                        spy={true}
+                                        smooth={true}
+                                        duration={1000}
+                                        onSetActive={() => setActiveLink(item.id)}
+                                        onClick={() => {
+                                            if (pathname !== "/") {
+                                                router.push("/");
+                                            }
+                                            setMobileMenuOpen(false);
+                                        }}
+                                        className={`px-3 py-2 block w-full rounded flex items-center ${
+                                            activeLink === item.id 
+                                            ? "text-white bg-green-600 font-bold"
+                                            : "text-[#000] hover:bg-green-50 hover:text-green-600"
+                                        }`}
+                                    >
+                                        <Icon className="mr-3 h-5 w-5" />
+                                        {item.label}
+                                    </LinkScroll>
+                                );
+                            })}
                         </ul>
                     </div>
                 )}
@@ -172,7 +190,7 @@ export default function Navbar() {
             {/* Bottom Navigation for Mobile (alternative to dropdown) */}
             {!mobileMenuOpen && (
                 <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 shadow-t bg-white border-t border-gray-200">
-                    <div className="px-2">
+                    <div className="">
                         <ul className="flex w-full justify-between items-center text-[#000]">
                             <CreateMenus
                                 setActiveLink={setActiveLink}
