@@ -34,6 +34,11 @@ const menuItems = [
         label: "Contact",
         icon: Mail
     },
+    {
+        id: "stats",
+        label: "Stats",
+        icon: Mail
+    },
 ];
 
 function CreateMenus({ activeLink, getMenuItems, setActiveLink, router, pathname, isMobile }) {

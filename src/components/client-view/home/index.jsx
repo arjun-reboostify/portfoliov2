@@ -17,10 +17,30 @@ const variants = () => ({
 });
 
 const socialIcons = [
-  { id: "facebook", icon: <FaFacebookF color="rgba(13, 183, 96, 1)" className="w-6 h-6 md:w-8 md:h-8" /> },
-  { id: "twitter", icon: <FaTwitter color="rgba(13, 183, 96, 1)" className="w-6 h-6 md:w-8 md:h-8" /> },
-  { id: "linkedin", icon: <FaLinkedinIn color="rgba(13, 183, 96, 1)" className="w-6 h-6 md:w-8 md:h-8" /> },
-  { id: "instagram", icon: <FaInstagram color="rgba(13, 183, 96, 1)" className="w-6 h-6 md:w-8 md:h-8" /> }
+  { 
+    id: "facebook", 
+    icon: <FaFacebookF color="blue" className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    href: "https://facebook.com",
+    label: "Facebook"
+  },
+  { 
+    id: "twitter", 
+    icon: <FaTwitter color="black" className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    href: "https://twitter.com",
+    label: "Twitter"
+  },
+  { 
+    id: "linkedin", 
+    icon: <FaLinkedinIn color="blue" className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    href: "https://linkedin.com",
+    label: "LinkedIn"
+  },
+  { 
+    id: "instagram", 
+    icon: <FaInstagram color="purple" className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    href: "https://instagram.com",
+    label: "Instagram"
+  }
 ];
 
 export default function ClientHomeView({ data }) {
@@ -29,7 +49,7 @@ export default function ClientHomeView({ data }) {
 
   return (
     <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12" id="home">
-         <div className="h-[6vh] w-full bg-transparent  flex items-center justify-center">
+         <div className="h-[6vh] w-full bg-transparent flex items-center justify-center">
       
     </div>
       <AnimationWrapper>
@@ -46,24 +66,36 @@ export default function ClientHomeView({ data }) {
                 : null
               }
             </h1>
-            <p className="text-gray-700 text-base md:text-lg mb-6">
+            <p className="text-gray-700 text-base md:text-lg mb-8">
               {data && data.length ? data[0]?.summary : null}
             </p>
             
             {/* Social Icons */}
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               {socialIcons.map((item) => (
-                <motion.div
+                <a
                   key={item.id}
-                  initial={{ scale: 0 }}
-                  animate={{ rotate: 360, scale: 1 }}
-                  transition={{ type: "spring", damping: 10, stiffness: 100, duration: 1.5 }}
-                  whileHover={{ scale: 1.1, rotate: 360 }}
-                  whileTap={{ scale: 0.9, rotate: -360, borderRadius: "100%" }}
-                  className="cursor-pointer p-2 bg-white rounded-full shadow-md hover:shadow-lg"
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
                 >
-                  {item.icon}
-                </motion.div>
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ rotate: 360, scale: 1 }}
+                    transition={{ type: "spring", damping: 10, stiffness: 100, duration: 1.5 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 cursor-pointer px-3 py-2 sm:px-4 sm:py-3 bg-white rounded-lg border-2 border-green-main shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                    <span className="text-blue-950 underline font-medium text-sm sm:text-base hidden sm:inline">
+                      {item.label}
+                    </span>
+                  </motion.div>
+                </a>
               ))}
             </div>
           </div>

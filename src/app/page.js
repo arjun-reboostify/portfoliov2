@@ -3,6 +3,7 @@ import ClientContactView from "@/components/client-view/contact";
 import ClientExperienceAndEducationView from "@/components/client-view/experience";
 import ClientHomeView from "@/components/client-view/home";
 import ClientProjectView from "@/components/client-view/project";
+import Stats from "./blogs/page";
 import Image from "next/image";
 
 async function extractAllDatas(currentSection) {
@@ -21,7 +22,7 @@ export default async function Home() {
   const experienceSectionData = await extractAllDatas("experience");
   const educationSectionData = await extractAllDatas("education");
   const projectSectionData = await extractAllDatas("project");
-
+ const stats = await extractAllDatas("stats");
   return (
     <div>
       <ClientHomeView data={homeSectionData} />
@@ -31,6 +32,7 @@ export default async function Home() {
       <ClientExperienceAndEducationView  educationData={educationSectionData} experienceData={experienceSectionData}  />
       <ClientProjectView data={projectSectionData} />
       <ClientContactView/>
+      <Stats data={stats}/>
     </div>
   );
 }

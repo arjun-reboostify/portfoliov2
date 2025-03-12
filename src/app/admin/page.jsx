@@ -1,5 +1,6 @@
 'use client'
 import AdminAboutView from "@/components/admin-view/about"
+import Stats from "@/components/admin-view/stats"
 import AdminContactView from "@/components/admin-view/contact"
 import AdminBlogsView from "@/components/admin-view/blogs"
 import AdminEducationView from "@/components/admin-view/education"
@@ -121,6 +122,15 @@ export default function AdminView(){
          
             component: <AdminBlogsView
             data={allData?.blogs}
+            setAllData={setAllData}
+            />
+        },
+        {
+            id: 'stats',
+            lable: 'stats',
+         
+            component: <Stats
+            data={allData?.stats}
             setAllData={setAllData}
             />
         }
