@@ -29,7 +29,26 @@ export async function getData(currentTab){
         console.log(e);
     }
 }
-
+export const updateDat = async (id, type, formData) => {
+    try {
+      const response = await fetch(`/api/${type}/update`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          _id: id,
+          ...formData,
+        }),
+      });
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+      return { success: false, message: error.message };
+    }
+  };
 export async function updateData(currentTab,formData){
     try {
         const response = await fetch(`/api/${currentTab}/update`,{

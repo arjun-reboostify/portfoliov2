@@ -3,7 +3,7 @@ import ClientContactView from "@/components/client-view/contact";
 import ClientExperienceAndEducationView from "@/components/client-view/experience";
 import ClientHomeView from "@/components/client-view/home";
 import ClientProjectView from "@/components/client-view/project";
-import Stats from "./blogs/page";
+import Stats from "@/components/client-view/stats";
 import Image from "next/image";
 
 async function extractAllDatas(currentSection) {
