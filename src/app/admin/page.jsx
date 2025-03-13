@@ -121,7 +121,7 @@ export default function AdminView(){
             lable: 'Blogs',
          
             component: <AdminBlogsView
-            data={allData?.Courses}
+            data={allData?.courses}
             setAllData={setAllData}
             />
         },
