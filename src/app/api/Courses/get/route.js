@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic"
 export async function GET(req) {
     try {
         await connectToDB();
-        const extractData = await courses.find({}); 
+        const extractData = await Courses.find({}); 
 
         if (extractData) {
             return NextResponse.json({
