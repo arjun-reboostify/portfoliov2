@@ -100,9 +100,9 @@ const Courses = "Courses"
         formData.category !== "" &&
         formData.title !== "" &&
         formData.concept !== "" &&
-        formData.videolink!==""&&
-        formData.content!==""&&
-        formData.keywords!==""&&
+        formData.videolink!=="" &&
+        formData.content!=="" &&
+        formData.keywords!=="" &&
         formData.illustrationlink !== "" ? true : false
     };
 
@@ -152,7 +152,7 @@ const Courses = "Courses"
                 controlItem.name === "content" ? (
         <div className="p-2 w-full">
             <div className="relative">
-                <label className="text-sm text-[#000]">
+                <label className="text-sm text-[#fff]">
                     {controlItem.lable}</label>
             
             <textarea 
@@ -164,7 +164,7 @@ const Courses = "Courses"
                     ...formData,
                     [controlItem.name] : e.target.value
                 })
-            } className="w-full border-green-main border-[2px] bg-[#ffffff] rounded h-32 text-base outline-none text-[#000] py-1 px-3 resize-none leading-6">
+            } className="w-full border-green-main border-[2px] bg-[#000] rounded h-32 text-base outline-none text-[#fff] py-1 px-3 resize-none leading-6">
 
             </textarea> 
             </div> 
@@ -172,7 +172,7 @@ const Courses = "Courses"
                 ) : (
             <div className="p-2 w-full">
             <div className="relative">
-                <label className="text-sm text-[#000]">
+                <label className="text-sm text-[#fff]">
                     {controlItem.lable}</label>
             
             <input 
@@ -184,7 +184,7 @@ const Courses = "Courses"
                     ...formData,
                     [controlItem.name] : e.target.value
                 })
-            } className="w-full border-green-main border-[2px] bg-[#ffffff] rounded text-base outline-none text-[#000] py-1 px-3 resize-none leading-6">
+            } className="w-full border-green-main border-[2px] bg-[#000] rounded text-base outline-none text-[#fff] py-1 px-3 resize-none leading-6">
 
             </input> 
             </div> 
@@ -192,10 +192,10 @@ const Courses = "Courses"
                 )
                 )}
                 {
-                    showSuccessMessage && <p className="text-[14px] font-bold my-[8px]">Your Message is successfully delivered</p>
+                    showSuccessMessage && <p className="text-[14px] text-[#fff] font-bold my-[8px]">Your Message is successfully delivered</p>
                 }
         <div className="p-2 w-full">
-            <button disabled={!isValidForm()} onClick={handleSendMessage} className="disabled:opacity-50 py-3 lg:py-4 px-12 lg:px-16 text-white-500 font-semibold rounded-lg text-2xl tracking-widest bg-green-main outline-none">Send Message</button>
+            <button disabled={!isValidForm} onClick={handleSendMessage} className="disabled:opacity-50 py-3 lg:py-4 px-12 lg:px-16 text-white-500 font-semibold rounded-lg text-2xl tracking-widest bg-green-main outline-none">Send Message</button>
         </div>
 
             </div>

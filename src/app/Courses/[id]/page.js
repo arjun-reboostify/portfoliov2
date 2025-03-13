@@ -10,7 +10,7 @@ export default function BlogPage({ params }) {
   useEffect(() => {
     async function fetchBlogData() {
       try {
-        const response = await getData("blogs");
+        const response = await getData("Courses");
         if (response?.success) {
           // Find the blog post that matches the name in the URL
           const foundBlog = response.data.find(

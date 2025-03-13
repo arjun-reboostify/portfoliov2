@@ -104,7 +104,7 @@ export default function AdminBlogsView({ data }) {
             {filteredBlogs?.map((item) => (
                 <a
                     key={item._id} 
-                    href={`/blogs/${encodeURIComponent(item.title)}`}
+                    href={`/Courses/${encodeURIComponent(item.title)}`}
                     className="p-5 border block hover:bg-gray-100 transition rounded-lg"
                 >
                     {item.illustrationlink && (

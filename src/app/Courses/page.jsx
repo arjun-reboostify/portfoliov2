@@ -9,7 +9,7 @@ export default function AdminView() {
 
   async function extractBlogsData() {
     try {
-      const response = await getData("blogs"); // Fetch only Blogs data
+      const response = await getData("Courses"); // Fetch only Blogs data
       if (response?.success) {
         setBlogsData(response.data || []);
       } else {
