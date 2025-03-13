@@ -1,18 +1,19 @@
 import connectToDB from "@/database"; 
-import Blogs from "@/models/Blogs";
+import Courses from "@/models/Courses";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic"
 
-export async function GET(req) {
+export async function POST(req) {
     try {
         await connectToDB();
-        const extractData = await Blogs.find({}); 
+        const extractData = await req.json();
+        const saveData = await Courses.create(extractData);
 
-        if (extractData) {
+        if (saveData) {
             return NextResponse.json({
                 success: true,
-                data: extractData,
+                message: "Data saved successfully"
             });
         } else {
             return NextResponse.json({

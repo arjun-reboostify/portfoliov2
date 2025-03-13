@@ -11,15 +11,15 @@ export default function AdminBlogsView({ data }) {
     // Extract unique email addresses for category filter
     useEffect(() => {
         if (data) {
-            const emails = [...new Set(data.map(item => item.email))];
+            const emails = [...new Set(data.map(item => item.category))];
             setUniqueEmails(emails);
         }
     }, [data]);
     
     // Filter blogs based on search term and selected email
     const filteredBlogs = data?.filter(blog => 
-        blog.name.toLowerCase().includes(searchTerm.toLowerCase()) && 
-        (selectedEmail === '' || blog.email === selectedEmail)
+        blog.category.toLowerCase().includes(searchTerm.toLowerCase()) && 
+        (selectedEmail === '' || blog.category === selectedEmail)
     );
     
     // Handle email selection
@@ -104,24 +104,24 @@ export default function AdminBlogsView({ data }) {
             {filteredBlogs?.map((item) => (
                 <a
                     key={item._id} 
-                    href={`/blogs/${encodeURIComponent(item.name)}`}
+                    href={`/blogs/${encodeURIComponent(item.title)}`}
                     className="p-5 border block hover:bg-gray-100 transition rounded-lg"
                 >
-                    {item.img && (
+                    {item.illustrationlink && (
                         <div className="mb-6">
                             <img 
-                                src={item.img} 
-                                alt={`Featured image for ${item.name}`}
+                                src={item.illustrationlink} 
+                                alt={`Featured image for ${item.title}`}
                                 className="w-full rounded-lg object-cover max-h-96"
                             />
                         </div>
                     )}
-                    <p className="font-bold">{item.name}</p>
-                    <p className="text-gray-600">{item.email}</p>
+                    <p className="font-bold">{item.title}</p>
+                    <p className="text-gray-600">{item.category}</p>
                     <p className="mt-2">
-  {item.message.length > 150 
-    ? `${item.message.substring(0, 150)}...` 
-    : item.message}
+  {item.concept.length > 150 
+    ? `${item.concept.substring(0, 150)}...` 
+    : item.concept}
 </p>
                 </a>
             ))}

@@ -1,7 +1,7 @@
 import connectToDB from "@/database"; 
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
-import Blogs from "@/models/Blogs";
+import Courses from "@/models/Courses";
 
 export const dynamic = "force-dynamic"
 
@@ -18,7 +18,7 @@ export async function DELETE(req) {
             }) 
         }
     
-    const result = await Blogs.deleteOne({ _id: new ObjectId(id)});
+    const result = await Courses.deleteOne({ _id: new ObjectId(id)});
 
     if (result.deletedCount === 1) {
         return NextResponse.json({

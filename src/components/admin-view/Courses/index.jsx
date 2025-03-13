@@ -5,47 +5,68 @@ import { addData,getData,handleDelete } from "@/services";
 
 const controls = [
     {
-        name: "name",
-        placeholder: "Enter your name",
+        name: "category",
+        placeholder: "Enter the category",
         type: "text",
-        lable: "Name"
+        lable: "category"
     },
     {
-        name: "email",
-        placeholder: "Enter your Email",
+        name: "title",
+        placeholder: "Enter your title",
         type: "text",
-        lable: "Email"
+        lable: "title"
     },
     {
-        name: "img",
-        placeholder: "Enter your Email",
+        name: "concept",
+        placeholder: "Enter your concept",
         type: "text",
-        lable: "img"
+        lable: "concept"
     },
     {
-        name: "message",
-        placeholder: "Enter your message",
+        name: "videolink",
+        placeholder: "Enter your videolink",
         type: "text",
-        lable: "Message"
+        lable: "videolink"
+    },
+    {
+        name: "content",
+        placeholder: "Enter your content",
+        type: "text",
+        lable: "content"
+    },
+    {
+        name: "keywords",
+        placeholder: "Enter your keywords",
+        type: "text",
+        lable: "keywords"
+    },
+    {
+        name: "illustrationlik",
+        placeholder: "Enter your illustrationlink",
+        type: "text",
+        lable: "illustrationlink"
     }
 ]
 
 const initialFormData ={
-    name: "",
-    email: "",
-    img: "",
-    message: ""
+  category:"",
+  title:"",
+  concept:"",
+  videolink:"",
+  content:"",
+  keywords:"",
+  illustrationlink:"",
 }
 
 
 export default function ClientBlogsView({data,setAllData}){
-const blogs = "blogs"
+const Courses = "Courses"
     const [formData, setFormData] = useState(initialFormData);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     
     async function handleSendMessage(){
-        const res = await addData("blogs",formData);
-        console.log(res,'blogsres');
+        const res = await addData("Courses",formData);
+        console.log(res,'Coursesres');
 
         if (res && res.success) {
             setFormData(initialFormData)
@@ -62,7 +83,7 @@ const blogs = "blogs"
     })
 
  const handleDeleteItem = async (id) => {
-        const response = await handleDelete(id,blogs);
+        const response = await handleDelete(id,Courses);
         if (response.success) {
             const updatedData = data.filter((item) => item._id !== id);
             setAllData((prevData) => ({
@@ -76,10 +97,13 @@ const blogs = "blogs"
     };
     const isValidForm = () => {
         return formData &&
-        formData.name !== "" &&
-        formData.email !== "" &&
-        formData.img !== "" &&
-        formData.message !== "" ? true : false
+        formData.category !== "" &&
+        formData.title !== "" &&
+        formData.concept !== "" &&
+        formData.videolink!==""&&
+        formData.content!==""&&
+        formData.keywords!==""&&
+        formData.illustrationlink !== "" ? true : false
     };
 
     return (
@@ -89,9 +113,9 @@ const blogs = "blogs"
         {data && data.length ? (
             data.map((item,index) => (
                 <div key={index} className="bg-[#ffffff] flex flex-col gap-2 p-6 rounded-lg shadow-md border border-green-600 hover:border-green-800 transition duration-300" >
- <p className="text-lg font-semibold text-gray-700">Degree: {item.name}</p>
- <p className="text-lg text-gray-700">Year: {item.email}</p>
- <p className="text-lg   text-gray-700">College: {item.message}</p>
+ <p className="text-lg font-semibold text-gray-700">Degree: {item.category}</p>
+ <p className="text-lg text-gray-700">Year: {item.concept}</p>
+ <p className="text-lg   text-gray-700">College: {item.title}</p>
 
   <div className="flex gap-2">
      <button onClick={() => handleDeleteItem(item._id)} className="bg-red-500 text-white-500 p-2 rounded">
@@ -125,7 +149,7 @@ const blogs = "blogs"
         <div className="w-full">
             <div className="flex flex-wrap -m-2">
                 {controls.map((controlItem) => 
-                controlItem.name === "message" ? (
+                controlItem.name === "content"||"content" ? (
         <div className="p-2 w-full">
             <div className="relative">
                 <label className="text-sm text-[#000]">

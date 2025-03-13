@@ -1,6 +1,6 @@
 "use client";
 
-import AdminBlogsView from "@/components/client-view/blogs";
+import AdminBlogsView from "@/components/client-view/Courses";
 import { getData } from "@/services";
 import { useEffect, useState } from "react";
 
