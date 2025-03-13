@@ -33,6 +33,7 @@ export default async function Home() {
       <ClientProjectView data={projectSectionData} />
       <ClientContactView/>
       <Stats data={stats}/>
+      <div class="h-[10vh] w-full bg-transparent"></div>
     </div>
   );
 }

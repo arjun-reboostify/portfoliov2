@@ -153,10 +153,9 @@ export default function Navbar() {
                         </button>
                     </div>
                 </nav>
-                
-                {/* Mobile Menu Dropdown (shown when toggled) */}
                 {mobileMenuOpen && (
                     <div className="lg:hidden bg-white px-4 py-3 shadow-lg">
+                  
                         <ul className="flex flex-col space-y-2">
                             {menuItems.map((item) => {
                                 const Icon = item.icon;
@@ -191,10 +190,9 @@ export default function Navbar() {
                     </div>
                 )}
             </header>
-
-            {/* Bottom Navigation for Mobile (alternative to dropdown) */}
             {!mobileMenuOpen && (
                 <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 shadow-t bg-white border-t border-gray-200">
+                    
                     <div className="">
                         <ul className="flex w-full justify-between items-center text-[#000]">
                             <CreateMenus
