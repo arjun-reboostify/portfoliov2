@@ -59,14 +59,14 @@ export default function ClientHomeView({ data }) {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
               {data && data.length 
                 ? data[0]?.heading.split(" ").map((item, index) => (
-                    <span key={index} className={`${index === 1 || index === 3 ? "text-green-main" : "text-gray-800"}`}>
+                    <span key={index} className={`${index === 1 || index === 3 ? "text-green-main" : "text-gray-200"}`}>
                       {item}{" "}
                     </span>
                   )) 
                 : null
               }
             </h1>
-            <p className="text-gray-700 text-base md:text-lg mb-8">
+            <p className="text-[#ffffff] text-base md:text-lg mb-8">
               {data && data.length ? data[0]?.summary : null}
             </p>
             
@@ -91,7 +91,7 @@ export default function ClientHomeView({ data }) {
                     <div className="flex items-center justify-center">
                       {item.icon}
                     </div>
-                    <span className="text-blue-950 underline font-medium text-sm sm:text-base hidden sm:inline">
+                    <span className="text-blue-400 underline font-medium text-sm sm:text-base hidden sm:inline">
                       {item.label}
                     </span>
                   </motion.div>

@@ -14,7 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         {<CommonLayout>
+          <div className="bg-[#000000] text-[#ffffff]">
         {children}
+        </div>
         </CommonLayout>}
         </body>
     </html>

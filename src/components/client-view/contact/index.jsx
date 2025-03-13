@@ -65,13 +65,13 @@ export default function ClientContactView() {
                 <div className="flex flex-col justify-center items-center">
                     <h1 className="leading-tight sm:leading-[70px] mb-2 sm:mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center">
                         {"Contact Me".split(" ").map((item, index) => (
-                            <span key={index} className={`${index === 1 ? "text-green-main" : "text-[#000]"}`}> {item}{" "} </span>
+                            <span key={index} className={`${index === 1 ? "text-green-main" : "text-[#fff]"}`}> {item}{" "} </span>
                         ))}
                     </h1> 
                 </div> 
             </AnimationWrapper>
 
-            <div className="text-gray-500 relative">
+            <div className="text-[#fff] relative">
                 <div className="container px-2 sm:px-5">
                     <div className="w-full">
                         <div className="flex flex-wrap -m-2">
@@ -79,7 +79,7 @@ export default function ClientContactView() {
                                 controlItem.name === "message" ? (
                                     <div key={index} className="p-2 w-full">
                                         <div className="relative">
-                                            <label className="text-sm text-[#000] block mb-1">
+                                            <label className="text-sm text-[#fff] block mb-1">
                                                 {controlItem.lable}
                                             </label>
                                             <textarea 
@@ -92,7 +92,7 @@ export default function ClientContactView() {
                                                         [controlItem.name]: e.target.value
                                                     })
                                                 } 
-                                                className="w-full border-green-main border-[2px] bg-[#ffffff] rounded h-24 sm:h-32 text-base outline-none text-[#000] py-1 px-3 resize-none leading-6"
+                                                className="w-full border-green-main border-[2px] bg-[#000] rounded h-24 sm:h-32 text-base outline-none text-[#fff] py-1 px-3 resize-none leading-6"
                                                 placeholder={controlItem.placeholder}
                                             />
                                         </div> 
@@ -114,7 +114,7 @@ export default function ClientContactView() {
                                                         [controlItem.name]: e.target.value
                                                     })
                                                 } 
-                                                className="w-full border-green-main border-[2px] bg-[#ffffff] rounded text-base outline-none text-[#000] py-1 px-3 leading-6"
+                                                className="w-full border-green-main border-[2px] bg-[#000] rounded text-base outline-none text-[#fff] py-1 px-3 leading-6"
                                                 placeholder={controlItem.placeholder}
                                             />
                                         </div> 

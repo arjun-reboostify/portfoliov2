@@ -60,12 +60,12 @@ function CreateMenus({ activeLink, getMenuItems, setActiveLink, router, pathname
                         router.push("/");
                     }
                 }}
-                className={`px-2 py-2 sm:px-3 md:px-4 mx-1 sm:mx-2 cursor-pointer animation-hover inline-block relative text-sm sm:text-base ${
+                className={`px-2 py-2 sm:px-3 md:px-4 mx-1 sm:mx-2 cursor-pointer animation-hover inline-block relative text-[#ffffff] text-sm sm:text-base ${
                     isMobile ? "flex-1 text-center flex flex-col items-center justify-center" : "flex items-center"
                 } ${
                     activeLink === item.id 
                     ? "text-green-main animation-active font-bold " + (isMobile ? "border-t-2 border-green-main" : "shadow-green-main")
-                    : "text-[#000] font-medium hover:text-green-main"
+                    : "text-[#fff] font-medium hover:text-green-main"
                 }`}
             >
                 <Icon className={`${isMobile ? "mb-1 h-5 w-5" : "mr-2 h-5 w-5"}`} />
@@ -111,7 +111,7 @@ export default function Navbar() {
                     </div>
                     
                     {/* Desktop Navigation */}
-                    <ul className="hidden lg:flex col-start-4 col-end-8 text-[#000] items-center">
+                    <ul className="hidden lg:flex col-start-4 col-end-8 text-[#ffffff] items-center">
                         <CreateMenus
                             setActiveLink={setActiveLink}
                             activeLink={activeLink}
@@ -175,10 +175,10 @@ export default function Navbar() {
                                             }
                                             setMobileMenuOpen(false);
                                         }}
-                                        className={`px-3 py-2 block w-full rounded flex items-center ${
+                                        className={`px-3 py-2 block w-full text-[#ffffff] rounded flex items-center ${
                                             activeLink === item.id 
-                                            ? "text-white bg-green-600 font-bold"
-                                            : "text-[#000] hover:bg-green-50 hover:text-green-600"
+                                            ? "text-[#ffffff] bg-green-600 font-bold"
+                                            : "text-[#fff]  hover:text-green-600"
                                         }`}
                                     >
                                         <Icon className="mr-3 h-5 w-5" />
@@ -194,7 +194,7 @@ export default function Navbar() {
                 <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 shadow-t bg-white border-t border-gray-200">
                     
                     <div className="">
-                        <ul className="flex w-full justify-between items-center text-[#000]">
+                        <ul className="flex w-full justify-between items-center text-[#fff]">
                             <CreateMenus
                                 setActiveLink={setActiveLink}
                                 activeLink={activeLink}

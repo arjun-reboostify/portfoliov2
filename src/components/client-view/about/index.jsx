@@ -72,10 +72,10 @@ export default function ClientAboutView({ data }) {
                         >
                             <div className="flex m-0 w-auto text-center sm:text-left">
                                 <div className="flex flex-col">
-                                    <p className="text-[36px] sm:text-[42px] md:text-[50px] text-green-main font-bold">
+                                    <p className="text-[36px] text-[#ffffff] sm:text-[42px] md:text-[50px] text-green-main font-bold">
                                         {infoItem.value}+
                                     </p>
-                                    <p className="text-[18px] sm:text-[20px] md:text-[25px] font-bold text-[#000000]">
+                                    <p className="text-[18px] sm:text-[20px] md:text-[25px] font-bold text-[#fff]">
                                         {infoItem.label}
                                     </p>
                                 </div>
@@ -89,10 +89,10 @@ export default function ClientAboutView({ data }) {
                 <div className="flex flex-col justify-center items-center">
                     <h1 className="leading-tight sm:leading-[50px] md:leading-[70px] mb-3 sm:mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium text-center">
                         {headingText.split(" ").map((item, index) => (
-                            <span key={index} className={`${index === 5 ? "text-green-main" : "text-[#000]"}`}> {item}{" "} </span>
+                            <span key={index} className={`${index === 5 ? "text-green-main" : "text-[#ffffff]"}`}> {item}{" "} </span>
                         ))}
                     </h1>
-                    <p className="text-[#000] mt-2 sm:mt-4 mb-4 sm:mb-8 font-bold text-center px-2 sm:px-4"> {data?.aboutme} </p> 
+                    <p className="text-[#ffffff] mt-2 sm:mt-4 mb-4 sm:mb-8 font-bold text-center px-2 sm:px-4"> {data?.aboutme} </p> 
                 </div>
             </AnimationWrapper>
 

@@ -17,7 +17,7 @@ export default function ClientExperienceAndEducationView({educationData, experie
                     <div className="flex flex-col justify-center items-center">
                         <h1 className="leading-tight sm:leading-[50px] md:leading-[70px] mb-2 sm:mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold">
                             {"My Experince".split(" ").map((item, index) => (
-                                <span key={index} className={`${index === 1 ? "text-green-main" : "text-[#000]"}`}> {item}{" "} </span>
+                                <span key={index} className={`${index === 1 ? "text-green-main" : "text-[#fff]"}`}> {item}{" "} </span>
                             ))}
                         </h1>
                     </div>
@@ -36,15 +36,15 @@ export default function ClientExperienceAndEducationView({educationData, experie
                                             </TimelineSeparator>
                                             <TimelineContent>
                                                 <div className="border-[2px] p-3 sm:p-4 rounded-[8px] border-green-main mt-[14px] ml-[8px] sm:ml-[16px]">
-                                                    <p className="font-bold text-sm sm:text-base">{ experienceItem.duration }</p>
-                                                    <p className="font-extrabold mt-1 sm:mt-2 text-sm sm:text-base">
+                                                    <p className="font-bold text-[#ffffff] text-sm sm:text-base">{ experienceItem.duration }</p>
+                                                    <p className="font-extrabold text-[#ffffff] mt-1 sm:mt-2 text-sm sm:text-base">
                                                         { experienceItem.company },{" "}
                                                         { experienceItem.location}
                                                     </p>
-                                                    <p className="font-extrabold mt-1 sm:mt-2 text-sm sm:text-base">
+                                                    <p className="font-extrabold text-[#ffffff] mt-1 sm:mt-2 text-sm sm:text-base">
                                                         { experienceItem.position } 
                                                     </p>
-                                                    <p className="font-bold mt-1 sm:mt-2 text-xs sm:text-sm">
+                                                    <p className="font-bold text-[#ffffff] mt-1 sm:mt-2 text-xs sm:text-sm">
                                                         { experienceItem.jobprofile } 
                                                     </p>
                                                 </div>
@@ -64,7 +64,7 @@ export default function ClientExperienceAndEducationView({educationData, experie
                     <div className="flex flex-col justify-center items-center">
                         <h1 className="leading-tight sm:leading-[50px] md:leading-[70px] mb-2 sm:mb-4 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold">
                             {"My Education".split(" ").map((item, index) => (
-                                <span key={index} className={`${index === 1 ? "text-green-main" : "text-[#000]"}`}> {item}{" "} </span>
+                                <span key={index} className={`${index === 1 ? "text-green-main" : "text-[#fff]"}`}> {item}{" "} </span>
                             ))}
                         </h1>
                     </div>
@@ -83,11 +83,11 @@ export default function ClientExperienceAndEducationView({educationData, experie
                                             </TimelineSeparator>
                                             <TimelineContent>
                                                 <div className="border-[2px] p-3 sm:p-4 rounded-[8px] border-green-main mt-[14px] ml-[8px] sm:ml-[16px]">
-                                                    <p className="font-bold text-sm sm:text-base">Year: { educationItem.year }</p> 
-                                                    <p className="font-extrabold mt-1 sm:mt-2 text-sm sm:text-base">
+                                                    <p className="font-bold text-[#ffffff] text-sm sm:text-base">Year: { educationItem.year }</p> 
+                                                    <p className="text-[#ffffff] font-extrabold mt-1 sm:mt-2 text-sm sm:text-base">
                                                         College: { educationItem.college } 
                                                     </p>
-                                                    <p className="font-bold mt-1 sm:mt-2 text-xs sm:text-sm">
+                                                    <p className=" text-[#ffffff] font-bold mt-1 sm:mt-2 text-xs sm:text-sm">
                                                         Degree: { educationItem.degree } 
                                                     </p>
                                                 </div>
