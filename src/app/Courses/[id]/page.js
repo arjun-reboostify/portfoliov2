@@ -14,7 +14,7 @@ export default function BlogPage({ params }) {
         if (response?.success) {
           // Find the blog post that matches the name in the URL
           const foundBlog = response.data.find(
-            (item) => encodeURIComponent(item.name) === params.id
+            (item) => encodeURIComponent(item.title) === params.id
           );
           
           if (foundBlog) {
