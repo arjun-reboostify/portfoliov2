@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import AnimationWrapper from "../../client-view/animation-wrapper";
-import { addData,getData,handleDelete } from "@/services";
+import { addData,handleDelete } from "@/services";
 
 const controls = [
     {
@@ -107,7 +107,7 @@ const Courses = "Courses"
     };
 
     return (
-        <div className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto" id="blogs">
+        <div className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto" id="Courses">
 
 <div className="mb-10 space-y-6">
         {data && data.length ? (
@@ -149,7 +149,7 @@ const Courses = "Courses"
         <div className="w-full">
             <div className="flex flex-wrap -m-2">
                 {controls.map((controlItem) => 
-                controlItem.name === "content"||"content" ? (
+                controlItem.name === "content" ? (
         <div className="p-2 w-full">
             <div className="relative">
                 <label className="text-sm text-[#000]">

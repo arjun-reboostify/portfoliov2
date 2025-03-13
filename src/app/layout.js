@@ -13,11 +13,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+      <div className="bg-[#000000] text-[#ffffff]">
         {<CommonLayout>
-          <div className="bg-[#000000] text-[#ffffff]">
+        
         {children}
-        </div>
+      
         </CommonLayout>}
+        </div>
         </body>
     </html>
   );
