@@ -2,7 +2,7 @@
 
 export default function AdminContactView({ data }){
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5" id="stats">
             {data && data.length ?
             data.map((item) => (
               
