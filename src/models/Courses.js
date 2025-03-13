@@ -8,7 +8,7 @@ const CoursesSchema = new mongoose.Schema(
         videolink: String,
         content: String,
         keywords : String,
-        illustrationlink: String,
+        img: String,
     },
     { timestamps: true }
 );

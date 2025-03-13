@@ -2,7 +2,7 @@
 import AdminAboutView from "@/components/admin-view/about"
 import Stats from "@/components/admin-view/stats"
 import AdminContactView from "@/components/admin-view/contact"
-import AdminBlogsView from "@/components/admin-view/Courses"
+import AdminCoursesView from "@/components/admin-view/Courses"
 import AdminEducationView from "@/components/admin-view/education"
 import AdminExperienceView from "@/components/admin-view/experience"
 import AdminHomeView from "@/components/admin-view/home"
@@ -117,10 +117,10 @@ export default function AdminView(){
             />
         },
         {
-            id: 'blogs',
-            lable: 'Blogs',
+            id: 'courses',
+            lable: 'courses',
          
-            component: <AdminBlogsView
+            component: <AdminCoursesView
             data={allData?.courses}
             setAllData={setAllData}
             />

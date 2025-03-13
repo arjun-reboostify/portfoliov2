@@ -110,7 +110,7 @@ export default function AdminBlogsView({ data }) {
                     {item.illustrationlink && (
                         <div className="mb-6">
                             <img 
-                                src={item.illustrationlink} 
+                                src={item.img} 
                                 alt={`Featured image for ${item.title}`}
                                 className="w-full rounded-lg object-cover max-h-96"
                             />

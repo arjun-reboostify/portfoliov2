@@ -41,10 +41,10 @@ const controls = [
         lable: "keywords"
     },
     {
-        name: "illustrationlik",
+        name: "img",
         placeholder: "Enter your illustrationlink",
         type: "text",
-        lable: "illustrationlink"
+        lable: "img"
     }
 ]
 
@@ -55,7 +55,7 @@ const initialFormData ={
   videolink:"",
   content:"",
   keywords:"",
-  illustrationlink:"",
+  img:""
 }
 
 
@@ -103,7 +103,7 @@ const Courses = "Courses"
         formData.videolink!=="" &&
         formData.content!=="" &&
         formData.keywords!=="" &&
-        formData.illustrationlink !== "" ? true : false
+        formData.img!==""  ? true : false
     };
 
     return (
@@ -113,9 +113,9 @@ const Courses = "Courses"
         {data && data.length ? (
             data.map((item,index) => (
                 <div key={index} className="bg-[#ffffff] flex flex-col gap-2 p-6 rounded-lg shadow-md border border-green-600 hover:border-green-800 transition duration-300" >
- <p className="text-lg font-semibold text-gray-700">Degree: {item.category}</p>
- <p className="text-lg text-gray-700">Year: {item.concept}</p>
- <p className="text-lg   text-gray-700">College: {item.title}</p>
+ <p className="text-lg font-semibold text-gray-700">{item.category}</p>
+ <p className="text-lg text-gray-700">{item.concept}</p>
+ <p className="text-lg   text-gray-700">{item.title}</p>
 
   <div className="flex gap-2">
      <button onClick={() => handleDeleteItem(item._id)} className="bg-red-500 text-white-500 p-2 rounded">
