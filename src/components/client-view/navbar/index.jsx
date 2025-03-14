@@ -134,7 +134,7 @@ export default function Navbar() {
                             className="py-1.5 px-4 border-2 border-green-600 text-green-600 font-semibold rounded-full text-base hover:bg-green-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out flex items-center"
                         >
                             <BookOpen className="mr-2 h-5 w-5" />
-                        Courses
+                        Blogs
                         </button>
                     </div>
                     
@@ -145,7 +145,7 @@ export default function Navbar() {
                             className="py-1 px-3 mr-3 border-2 border-green-600 text-green-600 font-semibold rounded-full text-sm hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out flex items-center"
                         >
                             <BookOpen className="mr-1 h-4 w-4" />
-                           Courses
+                          Blogs
                         </button>
                         <button 
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
