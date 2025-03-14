@@ -6,7 +6,7 @@ import logo from "../../../assets/logo.png";
 import { Link as LinkScroll, scroller } from "react-scroll";
 import { usePathname, useRouter } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Home, User, Briefcase, FolderDot, Mail, BookOpen } from "lucide-react";
+import { Home, User, Briefcase, FolderDot, Mail, BookOpen,ChartLine ,NotebookPen} from "lucide-react";
 
 const menuItems = [
     {
@@ -37,7 +37,12 @@ const menuItems = [
     {
         id: "stats",
         label: "Stats",
-        icon: Mail
+        icon: ChartLine
+    },
+    {
+        id: "courses",
+        label: "courses",
+        icon: NotebookPen
     },
 ];
 
@@ -69,7 +74,7 @@ function CreateMenus({ activeLink, getMenuItems, setActiveLink, router, pathname
                 }`}
             >
                 <Icon className={`${isMobile ? "mb-1 h-5 w-5" : "mr-2 h-5 w-5"}`} />
-                {item.label}
+             
             </LinkScroll>
         );
     });
@@ -96,8 +101,8 @@ export default function Navbar() {
 
     return (
         <>
-            <header className={`fixed top-0 w-full z-30 bg-white transition-all ${scrollActive ? "shadow-md pt-0" : "pt-2 sm:pt-4"}`}>
-                <nav className="max-w-screen-xl px-4 sm:px-6 lg:px-16 mx-auto grid grid-flow-col py-2 sm:py-3">
+            <header className={` fixed top-0 w-full z-30 bg-[#000] transition-all ${scrollActive ? "shadow-md pt-0" : "pt-2 sm:pt-4"}`}>
+                <nav className="bg-[#000]max-w-screen-xl px-4 sm:px-6 lg:px-16 mx-auto grid grid-flow-col py-2 sm:py-3">
                     <div className="col-start-1 col-end-2 flex items-center">
                         <Image
                             src={logo}
@@ -125,22 +130,22 @@ export default function Navbar() {
                     {/* Desktop Blog Button */}
                     <div className="hidden lg:flex col-start-10 col-end-12 justify-end items-center">
                         <button
-                            onClick={() => (window.location.href = "/blogs")} 
+                            onClick={() => (window.location.href = "/Courses")} 
                             className="py-1.5 px-4 border-2 border-green-600 text-green-600 font-semibold rounded-full text-base hover:bg-green-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out flex items-center"
                         >
                             <BookOpen className="mr-2 h-5 w-5" />
-                            Blogs
+                        Courses
                         </button>
                     </div>
                     
                     {/* Mobile Menu Toggle Button */}
                     <div className="lg:hidden col-start-10 col-end-12 flex justify-end items-center">
                         <button
-                            onClick={() => (window.location.href = "/blogs")} 
+                            onClick={() => (window.location.href = "/Courses")} 
                             className="py-1 px-3 mr-3 border-2 border-green-600 text-green-600 font-semibold rounded-full text-sm hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out flex items-center"
                         >
                             <BookOpen className="mr-1 h-4 w-4" />
-                            Blogs
+                           Courses
                         </button>
                         <button 
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -154,7 +159,7 @@ export default function Navbar() {
                     </div>
                 </nav>
                 {mobileMenuOpen && (
-                    <div className="lg:hidden bg-white px-4 py-3 shadow-lg">
+                    <div className="lg:hidden bg-[#000] px-4 py-3 shadow-lg">
                   
                         <ul className="flex flex-col space-y-2">
                             {menuItems.map((item) => {
@@ -191,7 +196,7 @@ export default function Navbar() {
                 )}
             </header>
             {!mobileMenuOpen && (
-                <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 shadow-t bg-white border-t border-gray-200">
+                <nav className="fixed bg-[#000] lg:hidden bottom-0 left-0 right-0 z-20 shadow-t bg-white border-t border-gray-200">
                     
                     <div className="">
                         <ul className="flex w-full justify-between items-center text-[#fff]">

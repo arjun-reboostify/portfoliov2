@@ -35,7 +35,7 @@ export default function AdminBlogsView({ data }) {
     };
     
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5" id="courses">
             {/* Filters Section */}
             <div className="mb-4 space-y-3">
                 {/* Search Bar */}
