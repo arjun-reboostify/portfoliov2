@@ -31,13 +31,13 @@ const socialIcons = [
   },
   { 
     id: "linkedin", 
-    icon: <FaLinkedinIn color="blue" className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <FaLinkedinIn className=" text-blue-700 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
     href: "https://linkedin.com",
     label: "LinkedIn"
   },
   { 
     id: "instagram", 
-    icon: <FaInstagram color="purple" className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <FaInstagram className="text-pink-600 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
     href: "https://instagram.com",
     label: "Instagram"
   }
@@ -72,6 +72,7 @@ export default function ClientHomeView({ data }) {
             
             {/* Social Icons */}
             <div className="flex flex-wrap gap-3 sm:gap-4">
+            <p className="text-gray-700 text-sm sm:text-base font-medium">Follow me on social media to stay connected!</p>
               {socialIcons.map((item) => (
                 <a
                   key={item.id}
@@ -86,7 +87,7 @@ export default function ClientHomeView({ data }) {
                     transition={{ type: "spring", damping: 10, stiffness: 100, duration: 1.5 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 cursor-pointer px-3 py-2 sm:px-4 sm:py-3 bg-white rounded-lg border-2 border-green-main shadow-md hover:shadow-lg transition-all duration-300"
+                    className="flex items-center gap-2 cursor-pointer px-3 py-2 sm:px-4 sm:py-3 bg-white rounded-lg border-2 border-blue-400 shadow-md hover:shadow-lg transition-all duration-300"
                   >
                     <div className="flex items-center justify-center">
                       {item.icon}
@@ -101,23 +102,48 @@ export default function ClientHomeView({ data }) {
           </div>
           
           {/* Image */}
-          <motion.div ref={containerRef} className="flex justify-center order-1 sm:order-2 mb-6 sm:mb-0">
-            <motion.div
-              drag
-              dragConstraints={containerRef}
-              className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-green-main rounded-lg shadow-xl"
-            >
-              <div className="absolute w-full h-full top-2 -left-2 rounded-lg border-4 border-gray-800"></div>
-              <Image
-                src={home}
-                alt="home image"
-                fill
-                quality={90}
-                sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, 320px"
-                className="object-cover rounded-lg absolute -top-1"
-              />
-            </motion.div>
-          </motion.div>
+          <motion.div 
+  ref={containerRef} 
+  className="flex justify-center mb-6 sm:mb-0" 
+  initial={{ opacity: 0 }} 
+  animate={{ opacity: 1 }} 
+  transition={{ duration: 0.5 }}
+>
+  <motion.div 
+    drag 
+    dragConstraints={containerRef} 
+    className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full shadow-xl overflow-hidden transition-all duration-300 hover:scale-105"
+    style={{ 
+      background: "linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)",
+      border: "10px solid #22c55e", // Green border
+    }}
+    whileHover={{ 
+      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
+    }}
+    whileTap={{ scale: 0.98 }}
+  >
+    {/* Remove this div as we're adding the border directly to the main element */}
+    {/* <div className="absolute w-full h-full top-2 -left-2 rounded-full border-4 border-gray-800 z-0"></div> */}
+    
+    <div className="absolute inset-0 bg-gradient-to-br from-green-500/30 to-blue-500/30 z-10 transition-opacity duration-300 hover:opacity-0"></div>
+    
+    <motion.div 
+      className="absolute inset-0 z-20" 
+      initial={{ scale: 1.2, opacity: 0 }} 
+      animate={{ scale: 1, opacity: 1 }} 
+      transition={{ duration: 0.7, ease: "easeOut" }}
+    >
+      <Image 
+        src={home} 
+        alt="home image" 
+        fill 
+        quality={90} 
+        sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, 320px" 
+        className="object-cover absolute -top-1" 
+      />
+    </motion.div>
+  </motion.div>
+</motion.div>
         </motion.div>
       </AnimationWrapper>
     </section>
