@@ -25,7 +25,7 @@ export default function AdminView() {
   }, []);
 
   return (
-    <div className="border-b border-gray-400">
+    <div className=" border-b border-gray-400 ">
       <div className="mt-10 p-10">
         <AdminBlogsView data={BlogsData} />
       </div>

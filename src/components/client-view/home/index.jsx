@@ -125,7 +125,7 @@ export default function ClientHomeView({ data }) {
     {/* Remove this div as we're adding the border directly to the main element */}
     {/* <div className="absolute w-full h-full top-2 -left-2 rounded-full border-4 border-gray-800 z-0"></div> */}
     
-    <div className="absolute inset-0 bg-gradient-to-br from-green-500/30 to-blue-500/30 z-10 transition-opacity duration-300 hover:opacity-0"></div>
+    <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-green-500/50 z-10 transition-opacity duration-300 hover:opacity-0"></div>
     
     <motion.div 
       className="absolute inset-0 z-20" 

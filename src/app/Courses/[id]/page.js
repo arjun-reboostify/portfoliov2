@@ -40,7 +40,7 @@ export default function BlogPage({ params }) {
   }
 
   return (
-    <div className="p-5 max-w-4xl mx-auto mt-10">
+    <div className=" w-screen h-screen p-5 max-w-4xl mx-auto mt-10">
       <h1 className="text-3xl font-bold mb-4">{blog.name}</h1>
       <h1 className="text-3xl font-bold mb-4">{blog.name}</h1>
       {blog.img && (
